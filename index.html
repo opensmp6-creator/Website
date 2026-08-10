@@ -3,327 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plotia.de | Der Minecraft Server</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome für Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>OpenSMP - Advanced Server Dashboard & Ressourcenpaket</title>
     <style>
         :root {
-            --primary: #10b981;
-            --primary-hover: #059669;
-            --bg-dark: #090a0f;
-            --bg-card: #131620;
-            --border: #1f293d;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #181818;
+            --bg-card: #202020;
+            --accent: #ff9800;
+            --accent-hover: #e68900;
+            --text-main: #f1f1f1;
+            --text-muted: #a0a0a0;
+            --border-color: #333333;
+            --code-bg: #121212;
+            --success: #4caf50;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
             color: var(--text-main);
-            overflow-x: hidden;
+            line-height: 1.7;
+            padding: 0;
         }
 
-        /* Hero / Header Section */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
         header {
-            position: relative;
-            min-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             text-align: center;
-            padding: 2rem 1rem;
-            background: linear-gradient(rgba(9, 10, 15, 0.7), rgba(9, 10, 15, 0.95)), 
-                        url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
-            border-bottom: 2px solid var(--border);
+            padding: 50px 0;
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 40px;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        h1 span {
-            color: var(--primary);
+        header h1 {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         header p {
-            font-size: 1.2rem;
             color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-        }
-
-        /* IP Copy Box */
-        .ip-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .ip-box:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .ip-box code {
-            font-family: monospace;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .ip-box i {
-            color: var(--primary);
             font-size: 1.2rem;
         }
 
-        /* Main Content Layout */
-        main {
-            max-width: 1100px;
-            margin: -4rem auto 4rem auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .section-title p {
-            color: var(--text-muted);
-        }
-
-        /* Features Grid */
-        .grid-3 {
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .card {
             background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            transform: translateY(-3px);
+            border-color: var(--accent);
         }
 
-        .card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.75rem;
+        .card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            border-left: 5px solid var(--accent);
+            padding-left: 12px;
         }
 
         .card p {
             color: var(--text-muted);
+            margin-bottom: 20px;
             font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Call to Action Banner */
-        .cta-banner {
-            background: linear-gradient(135deg, #131620 0%, #1a2236 100%);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .cta-text h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .cta-text p {
-            color: var(--text-muted);
         }
 
         .btn {
-            background-color: var(--primary);
-            color: white;
-            padding: 0.85rem 2rem;
-            border-radius: 10px;
+            display: inline-block;
+            background-color: var(--accent);
+            color: #121212;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
             text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+            border-radius: 6px;
+            transition: background 0.2s ease, transform 0.1s ease;
+            cursor: pointer;
+            border: none;
         }
 
         .btn:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
+            background-color: var(--accent-hover);
+            transform: scale(1.02);
         }
 
-        /* Footer */
-        footer {
-            background-color: #050608;
-            border-top: 1px solid var(--border);
+        .item-list-container {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--code-bg);
+            padding: 15px;
+            max-height: 280px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .item-category {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 10px 0 5px 0;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .item-list {
+            list-style: none;
+        }
+
+        .item-list li {
+            padding: 6px 10px;
+            border-bottom: 1px solid #1a1a1a;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: #d4d4d4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item-list li:hover {
+            background-color: #252525;
+        }
+
+        .badge {
+            background-color: #333;
+            color: var(--accent);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .stats-box {
+            display: flex;
+            justify-content: space-between;
+            background: var(--bg-secondary);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item {
             text-align: center;
-            padding: 2.5rem 1rem;
+        }
+
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--success);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 1000;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 0;
             color: var(--text-muted);
             font-size: 0.9rem;
-        }
-
-        footer p span {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* Toast Popup für IP Kopieren */
-        .toast {
-            visibility: hidden;
-            background-color: #10b981;
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 12px 24px;
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: visibility 0.3s, opacity 0.3s;
-            opacity: 0;
-        }
-
-        .toast.show {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        @media(max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .cta-banner { text-align: center; justify-content: center; }
+            border-top: 1px solid var(--border-color);
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Bereich -->
-    <header>
-        <h1>Plotia<span>.de</span></h1>
-        <p>Dein ultimatives Minecraft-Erlebnis für Java & Bedrock. Baue, kämpfe und entdecke eine epische Community-Welt!</p>
-        
-        <!-- IP Copy Element -->
-        <div class="ip-box" onclick="copyIP()">
-            <code id="server-ip">plotia.duckdns.org:1030</code>
-            <i class="fa-solid fa-copy" id="copy-icon"></i>
-        </div>
-    </header>
+    <div class="wrapper">
+        <header>
+            <h1>OpenSMP Network</h1>
+            <p>Zentrales Portal für Server-Ressourcenpakete, Custom Items und Netzwerkinformationen</p>
+        </header>
 
-    <!-- Hauptinhalt -->
-    <main>
-        <div class="section-title">
-            <h2>Warum Plotia.de?</h2>
-            <p>Das bietet dir unser Server-Netzwerk</p>
+        <div class="stats-box">
+            <div class="stat-item">
+                <div class="stat-value">playertools</div>
+                <div class="stat-label">Aktiver Namespace</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="item-count">18+</div>
+                <div class="stat-label">Registrierte Items</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">Online</div>
+                <div class="stat-label">Server Status</div>
+            </div>
         </div>
 
-        <div class="grid-3">
+        <main class="grid-container">
+            <!-- Sektion 1: Download-Modul -->
             <div class="card">
-                <i class="fa-solid fa-network-wired"></i>
-                <h3>Crossplay Support</h3>
-                <p>Egal ob PC (Java) oder Konsole/Smartphone (Bedrock) – spiele problemlos mit all deinen Freunden gemeinsam auf einem Server.</p>
+                <h2>Ressourcenpaket Download</h2>
+                <p>Lade dir das offizielle Server-Pack direkt herunter. Das Paket zwingt die korrekte Darstellung aller benutzerdefinierten Werkzeuge, Bögen und Waffen auf dem Server.</p>
+                
+                <div style="margin-bottom: 20px;">
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">Direktlink zur ZIP-Datei:</span>
+                    <code style="display: block; background: var(--code-bg); padding: 8px; border-radius: 4px; font-size: 0.8rem; color: var(--accent); word-break: break-all; margin-top: 5px;">https://opensmp6-creator.github.io/Website/playertools-resourcepack.zip</code>
+                </div>
+
+                <a class="btn" href="https://opensmp6-creator.github.io/Website/playertools-resourcepack.zip">ZIP-Paket herunterladen</a>
+                <button class="btn" style="background-color: #333; color: var(--text-main); margin-left: 10px;" onclick="copyLink()">Link kopieren</button>
             </div>
-            
+
+            <!-- Sektion 2: Detaillierte Item-Struktur -->
             <div class="card">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h3>Fair & Lagfrei</h3>
-                <p>Dank hochperformanter Hardware und modernem Anti-Cheat garantieren wir dir ein reibungsloses und faires Spielerlebnis rund um die Uhr.</p>
+                <h2>Enthaltene Modifikationen</h2>
+                <p>Eine Übersicht aller im Namespace <code>playertools</code>[cite: 1] hinterlegten Modell- und Texturkonfigurationen:</p>
+                
+                <div class="item-list-container">
+                    <div class="item-category">Spezial-Werkzeuge & Äxte</div>
+                    <ul class="item-list">
+                        <li><span>bedrock_pickaxe.png</span><span class="badge">Item</span></li>
+                        <li><span>op_owner_pickaxe.png</span><span class="badge">Item</span></li>
+                        <li><span>op_pickaxe.png</span><span class="badge">Item</span></li>
+                        <li><span>dev_pickaxe.png</span><span class="badge">Item</span></li>
+                        <li><span>amber_axe.png</span><span class="badge">Item</span></li>
+                        <li><span>timber_axe.png</span><span class="badge">Item</span></li>
+                    </ul>
+
+                    <div class="item-category">Multitools & Drills</div>
+                    <ul class="item-list">
+                        <li><span>multitool_v1.png</span><span class="badge">V1</span></li>
+                        <li><span>multitool_v2.png</span><span class="badge">V2</span></li>
+                        <li><span>multitool_v3.png</span><span class="badge">V3</span></li>
+                        <li><span>drill_v1.png</span><span class="badge">V1</span></li>
+                        <li><span>drill_v2.png</span><span class="badge">V2</span></li>
+                        <li><span>drill_v3.png</span><span class="badge">V3</span></li>
+                    </ul>
+
+                    <div class="item-category">Waffen, Bögen & Gadgets</div>
+                    <ul class="item-list">
+                        <li><span>op_sword.png</span><span class="badge">Waffe</span></li>
+                        <li><span>op_bow.png</span><span class="badge">Bogen</span></li>
+                        <li><span>owner_bow.png</span><span class="badge">Bogen</span></li>
+                        <li><span>dev_bow_matthias.png</span><span class="badge">Custom</span></li>
+                        <li><span>camera.png</span><span class="badge">Gadget</span></li>
+                    </ul>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Struktur basiert auf standardisierten JSON-Modellen und PNG-Texturen[cite: 1].</p>
             </div>
+        </main>
 
-            <div class="card">
-                <i class="fa-solid fa-comments"></i>
-                <h3>Starke Community</h3>
-                <p>Werde Teil unserer aktiven Spielerschaft, knüpfe neue Freundschaften und nimm an regelmäßigen Community-Events teil.</p>
-            </div>
-        </div>
+        <footer>
+            <p>&copy; 2026 OpenSMP Creator Network. Alle Rechte vorbehalten. Hosted via GitHub Pages.</p>
+        </footer>
+    </div>
 
-        <!-- Discord & Community CTA -->
-        <div class="cta-banner">
-            <div class="cta-text">
-                <h3>Werde Teil der Community!</h3>
-                <p>Tritt unserem Discord-Server bei für Support, Updates, Giveaways und Chats mit anderen Spielern.</p>
-            </div>
-            <a href="https://discord.gg/bEyUHzEDb" target="_blank" class="btn">
-                <i class="fa-brands fa-discord"></i> Discord Beitreten
-            </a>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 <span>Plotia.de</span> &bull; Alle Rechte vorbehalten. Nicht von Mojang oder Microsoft unterstützt.</p>
-    </footer>
-
-    <!-- Benachrichtigung beim Kopieren -->
-    <div id="toast" class="toast">Server-IP in die Zwischenablage kopiert!</div>
+    <div id="notification" class="notification">Link in die Zwischenablage kopiert!</div>
 
     <script>
-        // Funktion zum Kopieren der IP
-        function copyIP() {
-            const ipText = document.getElementById("server-ip").innerText;
-            navigator.clipboard.writeText(ipText).then(() => {
-                const toast = document.getElementById("toast");
-                toast.className = "toast show";
+        function copyLink() {
+            const link = "https://opensmp6-creator.github.io/Website/playertools-resourcepack.zip";
+            navigator.clipboard.writeText(link).then(() => {
+                const notif = document.getElementById("notification");
+                notif.style.display = "block";
                 setTimeout(() => {
-                    toast.className = toast.className.replace("show", "");
+                    notif.style.display = "none";
                 }, 3000);
             });
         }
     </script>
+
 </body>
 </html>
