@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plotia.de | Der Minecraft Server</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-hover: #059669;
+            --bg-dark: #090a0f;
+            --bg-card: #131620;
+            --border: #1f293d;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Hero / Header Section */
+        header {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(rgba(9, 10, 15, 0.7), rgba(9, 10, 15, 0.95)), 
+                        url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        h1 span {
+            color: var(--primary);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* IP Copy Box */
+        .ip-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .ip-box:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .ip-box code {
+            font-family: monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .ip-box i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Main Content Layout */
+        main {
+            max-width: 1100px;
+            margin: -4rem auto 4rem auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        /* Features Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Call to Action Banner */
+        .cta-banner {
+            background: linear-gradient(135deg, #131620 0%, #1a2236 100%);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .cta-text h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-text p {
+            color: var(--text-muted);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050608;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer p span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Toast Popup für IP Kopieren */
+        .toast {
+            visibility: hidden;
+            background-color: #10b981;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 12px 24px;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: visibility 0.3s, opacity 0.3s;
+            opacity: 0;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media(max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .cta-banner { text-align: center; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Bereich -->
+    <header>
+        <h1>Plotia<span>.de</span></h1>
+        <p>Dein ultimatives Minecraft-Erlebnis für Java & Bedrock. Baue, kämpfe und entdecke eine epische Community-Welt!</p>
+        
+        <!-- IP Copy Element -->
+        <div class="ip-box" onclick="copyIP()">
+            <code id="server-ip">plotia.duckdns.org:1030</code>
+            <i class="fa-solid fa-copy" id="copy-icon"></i>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main>
+        <div class="section-title">
+            <h2>Warum Plotia.de?</h2>
+            <p>Das bietet dir unser Server-Netzwerk</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="card">
+                <i class="fa-solid fa-network-wired"></i>
+                <h3>Crossplay Support</h3>
+                <p>Egal ob PC (Java) oder Konsole/Smartphone (Bedrock) – spiele problemlos mit all deinen Freunden gemeinsam auf einem Server.</p>
+            </div>
+            
+            <div class="card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Fair & Lagfrei</h3>
+                <p>Dank hochperformanter Hardware und modernem Anti-Cheat garantieren wir dir ein reibungsloses und faires Spielerlebnis rund um die Uhr.</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-comments"></i>
+                <h3>Starke Community</h3>
+                <p>Werde Teil unserer aktiven Spielerschaft, knüpfe neue Freundschaften und nimm an regelmäßigen Community-Events teil.</p>
+            </div>
+        </div>
+
+        <!-- Discord & Community CTA -->
+        <div class="cta-banner">
+            <div class="cta-text">
+                <h3>Werde Teil der Community!</h3>
+                <p>Tritt unserem Discord-Server bei für Support, Updates, Giveaways und Chats mit anderen Spielern.</p>
+            </div>
+            <a href="https://discord.gg/bEyUHzEDb" target="_blank" class="btn">
+                <i class="fa-brands fa-discord"></i> Discord Beitreten
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>Plotia.de</span> &bull; Alle Rechte vorbehalten. Nicht von Mojang oder Microsoft unterstützt.</p>
+    </footer>
+
+    <!-- Benachrichtigung beim Kopieren -->
+    <div id="toast" class="toast">Server-IP in die Zwischenablage kopiert!</div>
+
+    <script>
+        // Funktion zum Kopieren der IP
+        function copyIP() {
+            const ipText = document.getElementById("server-ip").innerText;
+            navigator.clipboard.writeText(ipText).then(() => {
+                const toast = document.getElementById("toast");
+                toast.className = "toast show";
+                setTimeout(() => {
+                    toast.className = toast.className.replace("show", "");
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
